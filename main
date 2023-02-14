@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:geopuzzle/homescreen.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OpeningScreen(),
+    );
+  }
+}
+
+class OpeningScreen extends StatefulWidget {
+  const OpeningScreen({super.key});
+
+  @override
+  State<OpeningScreen> createState() => _OpeningScreenState();
+}
+
+class _OpeningScreenState extends State<OpeningScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Title(
+                color: Colors.red,
+                child: const Text(
+                  "Geo Puzzle",
+                  style: TextStyle(fontSize: 69, color: Colors.red),
+                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
+                  icon: const Icon(
+                    Icons.play_arrow,
+                    size: 69,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
