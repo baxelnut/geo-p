@@ -1,0 +1,88 @@
+// ignore_for_file: file_names
+
+import 'package:flutter/material.dart';
+import 'package:geopuzzle/page_1.dart';
+
+class HomeScreen1 extends StatefulWidget {
+  const HomeScreen1({super.key});
+
+  @override
+  State<HomeScreen1> createState() => _HomeScreen1State();
+}
+
+class _HomeScreen1State extends State<HomeScreen1> {
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int counter = 1;
+  String lorem = "PLAY!";
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("What level are you at?"),
+          backgroundColor: Colors.cyan,
+        ),
+        body: ListView(children: [
+          const Divider(
+            color: Colors.black,
+          ),
+          const ListTile(
+              title: Text("I'm a noob"),
+              subtitle: Text("Let's learn how to play chess first!")),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextButton(
+                child: const Text("LEARN!"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const learnPage()));
+                },
+              )
+            ],
+          ),
+          const Divider(
+            color: Colors.black,
+          ),
+          const ListTile(
+            title: Text("I'm a PRO"),
+            subtitle: Text("Let's PLAY!"),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextButton(
+                child: Text(lorem),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const learnPage()));
+                },
+              ),
+            ],
+          ),
+        ]),
+      ),
+    );
+  }
+}
